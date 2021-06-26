@@ -1,0 +1,15 @@
+{
+  "name": "quick_rename_pic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "M3canixx",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "ramda": "^0.27.1"
+  }
+}
