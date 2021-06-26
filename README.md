@@ -4,5 +4,4 @@ Quick rename algorithm
 
 Put your images in the initial_folder, then
 
-npm install
-node index.js
+npm install -> node index.js
