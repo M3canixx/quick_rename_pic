@@ -1,36 +1,32 @@
 const fs = require('fs-extra');
 const R = require('ramda');
-pathinit = "./initial_folder";
-const FileName = [];
 
-const getfiles = fs.readdirSync(pathinit).forEach((file) => {
-  FileName.push(pathinit + "/" + file);
-});
+const pathinit = './initial_folder';
+const newpath = './sorted_folder';
 
-const createfolder = (x) => fs.ensureDir(R.nth(1, x));
-
+const createfolder = x => {fs.ensureDir(newpath + "/" + R.nth(1, x)), fs.ensureDir(newpath);}
 
 const movefiles = ([nameofile, extension]) => {
-  fs.rename(nameofile, `./${extension}/${fs.readdirSync(extension).length}.${extension}`,(error) => {
-      if (error) {
-        throw error;
-      }
+  fs.rename(nameofile, `${newpath}/${extension}/${fs.readdirSync(newpath + "/" + extension ).length}.${extension}`, error => {
+    if (error) {
+      throw error;
     }
+  }
   );
 };
 
-const addextension = x => [x, R.nth(-1, x.split("."))]
+const addextension = x => [`${pathinit}/${x}`, R.nth(-1, x.split('.'))];
 
 const main = async () => {
-  getfiles;
+  const getfiles = fs.readdirSync(pathinit);
 
-  const ZipFileName = R.map(addextension, FileName);
+  const ZipFileName = R.map(addextension, getfiles);
 
-  R.map(createfolder, ZipFileName)
+  R.map(createfolder, ZipFileName);
 
-  R.map(movefiles, ZipFileName)
+  R.map(movefiles, ZipFileName);
 
-  console.log("done")
+  console.log('done');
 };
 
 main();
