@@ -1,6 +1,6 @@
 # quick_rename_pic
 
-Quick rename algorithm
+Quick rename and sort algorithm
 
 Put your images in the initial_folder, then
 
